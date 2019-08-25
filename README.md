@@ -38,8 +38,8 @@ Methods
 -------
 
 ### Async
-* [isFile](./utils/is-file.md)
-* [isFolder](./utils/is-folder.md)
+* [isFile](./docs/utils/is-file.md)
+* [isFolder](./docs/utils/is-folder.md)
 
 ### Sync
 * *None by now, use **async** ;)*
