@@ -12,6 +12,8 @@ const whitelist = [
 	'name',
 	'version',
 	'description',
+	'homepage',
+	'repository',
 	'author',
 	'license',
 	'dependencies',
