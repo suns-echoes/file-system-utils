@@ -1,6 +1,6 @@
 {
   "name": "@suns-echoes/file-system-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "File System Utilities Library",
   "scripts": {
     "coverage": "cross-env NODE_ENV=test nyc mocha",
@@ -9,9 +9,10 @@
     "lint": "eslint .",
     "dist": "node -r esm scripts/dist"
   },
+  "homepage": "https://github.com/suns-echoes/file-system-utils",
   "repository": {
     "type": "git",
-    "url": "https://github.com/suns-echoes/file-system-utils.git"
+    "url": "https://github.com/suns-echoes/file-system-utils"
   },
   "author": "Aneta Suns <suns.echoes@gmail.com>",
   "license": "MIT",
