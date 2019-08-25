@@ -17,6 +17,12 @@ async function _isFile(path) {
 }
 
 
+/**
+ * Checks if entity is file
+ * @async @method isFile
+ * @param {string} path - entity path
+ * @returns {Promise} - the promise of check
+ */
 export async function isFile(path) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"path" is not a string');

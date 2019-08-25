@@ -17,6 +17,12 @@ async function _isFolder(path) {
 }
 
 
+/**
+ * Checks if entity is folder
+ * @async @method isFolder
+ * @param {string} path - entity path
+ * @returns {Promise} - the promise of check
+ */
 export async function isFolder(path) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"path" is not a string');
