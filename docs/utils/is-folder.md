@@ -14,17 +14,20 @@ Note: *Return false if entity is symlink.*
 ```
 
 
-## Arguments
+Arguments
+---------
 
 * `<string>` `path` - entity path.
 
 
-## Returns
+Returns
+-------
 
 * `<Promise>` - the promise of check.
 
 
-## Examples
+Examples
+--------
 
 ```js
 // return true if path exists

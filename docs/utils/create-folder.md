@@ -12,17 +12,20 @@ Method creates single folder or nested folders according to provided path.
 ```
 
 
-## Arguments
+Arguments
+---------
 
 * `<string>` `path` - path to create.
 
 
-## Returns
+Returns
+-------
 
 * `<Promise>` - the promise of folder creation.
 
 
-## Examples
+Examples
+--------
 
 ```js
 // create folder
