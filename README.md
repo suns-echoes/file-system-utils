@@ -38,11 +38,15 @@ Methods
 -------
 
 ### Async
+
 * [createFolder](./docs/utils/create-folder.md)
 * [isFile](./docs/utils/is-file.md)
 * [isFolder](./docs/utils/is-folder.md)
+* [readJSONFile](./docs/utils/read-json-file.md)
+* [writeJSONFile](./docs/utils/write-json-file.md)
 
 ### Sync
+
 * *None by now, use **async** ;)*
 
 
