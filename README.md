@@ -7,7 +7,7 @@ File System Utilities
 Installation
 ------------
 
-`npm install @suns-echoes/file-system-utils`
+`npm i @suns-echoes/file-system-utils`
 
 
 Usage
@@ -38,6 +38,7 @@ Methods
 -------
 
 ### Async
+* [createFolder](./docs/utils/create-folder.md)
 * [isFile](./docs/utils/is-file.md)
 * [isFolder](./docs/utils/is-folder.md)
 
