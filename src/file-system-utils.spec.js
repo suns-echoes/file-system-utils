@@ -12,7 +12,7 @@ async function findMethods() {
 	const matchNonSpecFiles = /^((?!\.spec\.js).)*\.js$/;
 	const methods = [];
 
-	for (let entity of entities) {
+	for (const entity of entities) {
 		if (matchNonSpecFiles.test(entity)) {
 			const module = await import(`./utils/${entity}`);
 			const keys = Object.keys(module);
