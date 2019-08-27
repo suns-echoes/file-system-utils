@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { promisify } = require('util');
 
-import { FileSystemUtils } from './file-system-utils';
+import { FileSystemUtils } from './file-system-utils.js';
 
 
 const readdir = promisify(fs.readdir);

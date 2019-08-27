@@ -1,7 +1,7 @@
 import { rollup } from 'rollup';
 import minify from 'rollup-plugin-babel-minify';
 
-import { config } from '../config';
+import { config } from '../config.js';
 
 
 const plugins = [
