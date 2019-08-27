@@ -60,6 +60,7 @@
 		"no-var": "error",
 		"operator-linebreak": ["error", "after"],
 		"padded-blocks": ["error", "never"],
+		"prefer-const": "error",
 		"prefer-rest-params": "error",
 		"quotes": ["error", "single"],
 		"rest-spread-spacing": ["error", "never"],
