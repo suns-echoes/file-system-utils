@@ -39,6 +39,7 @@ Methods
 
 ### Async
 
+* [copy](./docs/utils/copy.md)
 * [createFolder](./docs/utils/create-folder.md)
 * [isFile](./docs/utils/is-file.md)
 * [isFolder](./docs/utils/is-folder.md)
