@@ -73,12 +73,12 @@ function filter(src, dest) {
 	return /\.js$/.test(src);
 }
 
-await FileSystemUtils.copy('src', 'dest', { filter });
+await FileSystemUtils.copy('src', 'dest', filter);
 ```
 
 ```js
 // copy only .js files but skip .spec.js files ("src" path will be tested)
 const filter = /^((?!\.spec\.js).)*\.js$/;
 
-await FileSystemUtils.copy('src', 'dest', { filter });
+await FileSystemUtils.copy('src', 'dest', filter);
 ```
