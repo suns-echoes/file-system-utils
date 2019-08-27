@@ -44,6 +44,7 @@ Methods
 * [isFile](./docs/utils/is-file.md)
 * [isFolder](./docs/utils/is-folder.md)
 * [readJSONFile](./docs/utils/read-json-file.md)
+* [remove](./docs/utils/remove.md)
 * [writeJSONFile](./docs/utils/write-json-file.md)
 
 ### Sync
