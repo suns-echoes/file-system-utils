@@ -14,23 +14,25 @@ Usage
 -----
 
 ```js
-// import library distribution (only default export)
-import FileSystemUtils from './libs/file-system-utils/index.js';
+// CommonJS library distribution file (only default export)
+import exec from '@suns-echoes/file-system-utils';
+// or
+const exec = require('@suns-echoes/file-system-utils');
 ```
 
 ```js
 // import library from source (default export)
-import FileSystemUtils from './libs/file-system-utils/src/index.js';
+import FileSystemUtils from './libs/@suns-echoes/file-system-utils/src/index.js';
 ```
 
 ```js
 // import library from source (named export)
-import { FileSystemUtils } from './libs/file-system-utils/src/file-system-utils.js';
+import { FileSystemUtils } from './libs/@suns-echoes/file-system-utils/src/file-system-utils.js';
 ```
 
 ```js
 // import single util from source (only named exports)
-import { isFile } from './libs/file-system-utils/src/utils/is-file.js';
+import { isFile } from './libs/@suns-echoes/file-system-utils/src/utils/is-file.js';
 ```
 
 
