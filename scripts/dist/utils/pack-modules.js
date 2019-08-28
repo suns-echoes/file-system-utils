@@ -1,23 +1,17 @@
-import { rollup } from 'rollup';
-import minify from 'rollup-plugin-babel-minify';
+const { rollup } = require('rollup');
 
 import { config } from '../config.js';
 
 
-const plugins = [
-	minify(config.rollup.plugins.minify),
-];
-
 const inputOptions = {
 	input: config.paths.main.input,
-	plugins,
 	treeshake: true,
 };
 
 const outputOptions = {
 	compact: true,
 	file: config.paths.main.output,
-	format: 'esm',
+	format: 'cjs',
 };
 
 
