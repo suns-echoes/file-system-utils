@@ -1,6 +1,6 @@
-import { join } from 'path';
+const { join } = require('path');
 
-import { copy } from 'fs-extra';
+const { copy } = require('fs-extra');
 
 import { config } from '../config.js';
 

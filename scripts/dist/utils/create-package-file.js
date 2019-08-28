@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { promisify } from 'util';
+const fs = require('fs');
+const { promisify } = require('util');
 
 import { config } from '../config.js';
 

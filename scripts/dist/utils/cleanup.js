@@ -1,4 +1,4 @@
-import { remove } from 'fs-extra';
+const { remove } = require('fs-extra');
 
 import { config } from '../config.js';
 
