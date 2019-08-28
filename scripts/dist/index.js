@@ -7,6 +7,12 @@ async function runDist() {
 	console.log('PREPARING DISTRIBUTION FILES');
 	console.log('');
 
+	console.log(' - Run linter');
+	await dist.runLinter();
+
+	console.log(' - Run tests');
+	await dist.runTests();
+
 	console.log(' - Cleanup dist folder');
 	await dist.cleanup();
 
