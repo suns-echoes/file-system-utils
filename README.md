@@ -52,16 +52,6 @@ Methods
 * *None by now, use **async** ;)*
 
 
-Running the Test Suite
-----------------------
-
-Library contains lots of tests to ensure highest quality.
-
-* `npm run coverage` - runs the unit tests and shows the coverage
-* `npm run test` - runs the unit tests
-* `npm run lint` - runs the linter
-
-
 License
 -------
 
