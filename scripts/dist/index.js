@@ -10,7 +10,7 @@ async function runDist() {
 	console.log(' - Run linter');
 	await dist.runLinter();
 
-	console.log(' - Run tests');
+	console.log(' - Run tests and coverage');
 	await dist.runTests();
 
 	console.log(' - Cleanup dist folder');
