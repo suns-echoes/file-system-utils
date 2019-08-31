@@ -1,11 +1,9 @@
 Is File
 =======
 
-**Checks if entity is file**
+Method checks if entity with given path is file.
 
-Method returns promise which resolves to `true` if path to entity is pointing to file. Otherwise resolves to `false`.
-
-Note: *Returns false if entity is symlink.*
+Note: *Returns false if entity is symlink to file.*
 
 ```js
 /* Promise */ FileSystemUtils.isFile(

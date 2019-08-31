@@ -18,8 +18,8 @@ async function _writeJSONFile(filepath, data, replacer, space) {
 
 
 /**
- * Write object to file in JSON format
- * @async @function writeJSONFile
+ * Method serialize given data and writes it in JSON format to file.
+ * @async @method writeJSONFile
  * @param {string} filepath - file path
  * @param {object} data - data to write to file
  * @param {function} [replacer] - optional, replacer function for JSON stringify

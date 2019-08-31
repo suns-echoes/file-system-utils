@@ -28,7 +28,7 @@ async function _createFolder(path) {
 
 
 /**
- * Create single folder or path
+ * Method creates single folder or nested folders according to given path.
  * @async @method createFolder
  * @param {string} path - path to create
  * @returns {Promise} - the promise of folder creation

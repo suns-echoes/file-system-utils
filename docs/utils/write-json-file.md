@@ -1,12 +1,10 @@
 Write JSON file
 ===============
 
-**Write JSON data to file**
-
-Method serialize and writes JSON data to file.
+Method serialize given data and writes it in JSON format to file.
 
 Note: *If file exists, it will be overwritten, otherwise it will be created.*
-Note: *If folder(s) does not exists, it will be created.*
+Note: *If folder(s) does not exist, it will be created.*
 
 ```js
 /* Promise */ StringUtils.writeJSONFile(
@@ -46,6 +44,6 @@ Examples
 // write data to file
 await StringUtils.writeJSONFile('data.json', { ...data });
 
-// write data to file even if path does not exists.
+// write data to file even if path does not exist.
 await StringUtils.writeJSONFile('non/existing/path/data.json', { ...data });
 ```

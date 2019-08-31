@@ -36,11 +36,11 @@ async function _copy(src, dest, filter) {
 
 
 /**
- * Copy file or folder (with it's content)
- * @async @function copy
+ * Method copies file or folder with it's content.
+ * @async @method copy
  * @param {string} src - source path
  * @param {string} dest - destination path
- * @param {function|regexp} [filter] - optional, copy if function or regexp test returns true
+ * @param {function|regexp} [filter] - copy if function or regexp test returns true
  * @returns {Promise} - the promise of copy
  */
 export async function copy(src, dest, filter) {

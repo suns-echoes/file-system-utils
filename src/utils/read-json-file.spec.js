@@ -25,7 +25,7 @@ describe('readJSONFile', () => {
 		expect(fileData).to.eql(data);
 	});
 
-	it('returns "undefined" if file does not exists', async () => {
+	it('returns "undefined" if file does not exist', async () => {
 		const filepath = 'path/to/nowhere';
 		const data = undefined;
 

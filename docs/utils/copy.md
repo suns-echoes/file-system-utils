@@ -1,7 +1,7 @@
 Copy
 ====
 
-**Copy file or folder with it's content**
+Method copies file or folder with it's content.
 
 Note: *If "src" is file than filter will not apply.*
 

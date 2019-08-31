@@ -1,9 +1,7 @@
 Create folder
 =============
 
-**Create single folder or path**
-
-Method creates single folder or nested folders according to provided path.
+Method creates single folder or nested folders according to given path.
 
 ```js
 /* Promise */ StringUtils.createFolder(

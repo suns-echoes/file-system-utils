@@ -18,7 +18,7 @@ async function _isFolder(path) {
 
 
 /**
- * Checks if entity is folder
+ * Method checks if entity with given path is folder.
  * @async @method isFolder
  * @param {string} path - entity path
  * @returns {Promise} - the promise of check

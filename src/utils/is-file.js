@@ -18,7 +18,7 @@ async function _isFile(path) {
 
 
 /**
- * Checks if entity is file
+ * Method checks if entity with given path is file.
  * @async @method isFile
  * @param {string} path - entity path
  * @returns {Promise} - the promise of check

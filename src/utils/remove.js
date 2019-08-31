@@ -39,8 +39,8 @@ async function _remove(path) {
 
 
 /**
- * Remove file or folder (even if it's not empty)
- * @async @function remove
+ * Method removes file or folder with it's content.
+ * @async @method remove
  * @param {string} path - path to remove
  * @returns {void}
  */

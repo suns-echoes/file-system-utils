@@ -1,11 +1,9 @@
 Is Folder
 =========
 
-**Checks if entity is folder**
+Method checks if entity with given path is folder.
 
-Method returns promise which resolves to `true` if path to entity is pointing to folder. Otherwise resolves to `false`.
-
-Note: *Return false if entity is symlink.*
+Note: *Returns false if entity is symlink to folder.*
 
 ```js
 /* Promise */ FileSystemUtils.isFolder(

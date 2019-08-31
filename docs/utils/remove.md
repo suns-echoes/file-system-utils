@@ -1,11 +1,9 @@
 Remove
 ======
 
-**Remove file or folder**
+Method removes file or folder with it's content.
 
-Removes file or folder with it's content.
-
-Note: *This function will not throw error if path does not exists.*
+Note: *This method will not throw error if path does not exist.*
 
 ```js
 /* Promise */ StringUtils.remove(

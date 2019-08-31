@@ -26,8 +26,8 @@ async function _readJSONFile(filepath) {
 
 
 /**
- * Read JSON file contents and parse it
- * @async @function readJSONFile
+ * Method reads JSON file and returns promise which resolves with parsed data.
+ * @async @method readJSONFile
  * @param {string} filepath - file path
  * @returns {object} - parsed JSON object
  */

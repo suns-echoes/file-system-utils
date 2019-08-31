@@ -41,7 +41,7 @@ describe('isFolder', () => {
 		expect(isEntityFolder).to.be.false;
 	});
 
-	it('returns false if path does not exists', async () => {
+	it('returns false if path does not exist', async () => {
 		const path = join(rootpath, 'non/existing/path');
 
 		const isEntityFolder = await isFolder(path);

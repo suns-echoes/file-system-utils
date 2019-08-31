@@ -1,11 +1,9 @@
 Read JSON file
 ==============
 
-**Read JSON file contents and parse it**
+Method reads JSON file and returns promise which resolves with parsed data.
 
-Method reads JSON file and resolves with parsed data.
-
-Note: *If file does not exists, method will resolve with `undefined`.*
+Note: *If file does not exist, promise will resolve with `undefined`.*
 
 ```js
 /* Promise */ StringUtils.readJSONFile(
