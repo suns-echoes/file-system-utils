@@ -22,8 +22,8 @@ async function _writeJSONFile(filepath, data, replacer, space) {
  * @async @method writeJSONFile
  * @param {string} filepath - file path
  * @param {object} data - data to write to file
- * @param {function} [replacer] - optional, replacer function for JSON stringify
- * @param {string} [space] - optional, indent space for JSON stringify
+ * @param {function} [replacer] - replacer function for JSON stringify
+ * @param {string} [space] - indent space for JSON stringify
  * @returns {Promise}
  */
 export async function writeJSONFile(filepath, data, replacer, space) {

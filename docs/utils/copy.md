@@ -19,7 +19,7 @@ Arguments
 
 * `<string>` `src` - source path;
 * `<string>` `dest` - destination path;
-* `<function|regexp>` `filter` - optional, copy if function or regexp test returns true.
+* `<function|regexp>` `[filter]` - optional, copy if function or regexp test returns true.
 
 
 Returns
