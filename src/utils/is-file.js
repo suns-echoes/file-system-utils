@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const { promisify } = require('util');
 
@@ -23,10 +25,10 @@ async function _isFile(path) {
  * @param {string} path - entity path
  * @returns {Promise} - the promise of check
  */
-export async function isFile(path) {
+module.exports.isFile = async function (path) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"path" is not a string');
 	}
 
 	return await _isFile(path);
-}
+};

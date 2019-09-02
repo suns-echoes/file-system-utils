@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const { join } = require('path');
 const { promisify } = require('util');
@@ -32,7 +34,7 @@ async function _listFiles(path, filelist) {
  * @param {string} path - path to list
  * @returns {Promise} - the promise of list
  */
-export async function listFiles(path) {
+module.exports.listFiles = async function (path) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
@@ -40,4 +42,4 @@ export async function listFiles(path) {
 	const filelist = [];
 
 	return _listFiles(path, filelist);
-}
+};

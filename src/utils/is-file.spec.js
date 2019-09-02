@@ -1,10 +1,12 @@
+'use strict';
+
 const fs = require('fs');
 const { join } = require('path');
 const { promisify } = require('util');
 
 const { mkdirs, remove } = require('fs-extra');
 
-import { isFile } from './is-file.js';
+const { isFile } = require('./is-file.js');
 
 
 const writeFile = promisify(fs.writeFile);

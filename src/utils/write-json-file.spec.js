@@ -1,6 +1,8 @@
+'use strict';
+
 const { mkdirs, readJson, remove } = require('fs-extra');
 
-import { writeJSONFile } from './write-json-file.js';
+const { writeJSONFile } = require('./write-json-file.js');
 
 
 describe('writeJSONFile', () => {

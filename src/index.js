@@ -1,4 +1,6 @@
-import { FileSystemUtils } from './file-system-utils.js';
+'use strict';
+
+const { FileSystemUtils } = require('./file-system-utils.js');
 
 
-export default FileSystemUtils;
+module.exports = FileSystemUtils;

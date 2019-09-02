@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const { join } = require('path');
 const { promisify } = require('util');
@@ -19,7 +21,7 @@ async function _remove(path) {
 			for (const entity of entities) {
 				const subpath = join(path, entity);
 
-				await remove(subpath);
+				await _remove(subpath);
 			}
 
 			await rmdir(path);
@@ -44,10 +46,10 @@ async function _remove(path) {
  * @param {string} path - path to remove
  * @returns {void}
  */
-export async function remove(path) {
+module.exports.remove = async function (path) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"path" is not a string');
 	}
 
 	return await _remove(path);
-}
+};

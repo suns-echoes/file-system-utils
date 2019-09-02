@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const { promisify } = require('util');
 
@@ -33,10 +35,10 @@ async function _createFolder(path) {
  * @param {string} path - path to create
  * @returns {Promise} - the promise of folder creation
  */
-export async function createFolder(path) {
+module.exports.createFolder = async function (path) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"path" is not a string');
 	}
 
 	return await _createFolder(path);
-}
+};

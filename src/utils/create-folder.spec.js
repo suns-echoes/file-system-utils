@@ -1,9 +1,11 @@
+'use strict';
+
 const { mkdirs, pathExists, remove, writeJson } = require('fs-extra');
 
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 
-import { createFolder } from './create-folder.js';
+const { createFolder } = require('./create-folder.js');
 
 
 chai.use(chaiAsPromised);

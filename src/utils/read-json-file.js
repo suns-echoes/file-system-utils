@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const { promisify } = require('util');
 
@@ -31,10 +33,10 @@ async function _readJSONFile(filepath) {
  * @param {string} filepath - file path
  * @returns {object} - parsed JSON object
  */
-export async function readJSONFile(filepath) {
+module.exports.readJSONFile = async function (filepath) {
 	if (typeof filepath !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
 
 	return await _readJSONFile(filepath);
-}
+};

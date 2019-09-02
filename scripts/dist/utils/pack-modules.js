@@ -1,6 +1,6 @@
 const { rollup } = require('rollup');
 
-import { config } from '../config.js';
+const { config } = require('../config.js');
 
 
 const inputOptions = {
@@ -15,8 +15,8 @@ const outputOptions = {
 };
 
 
-export async function packModules() {
+module.exports.packModules = async function () {
 	const bundle = await rollup(inputOptions);
 
 	await bundle.write(outputOptions);
-}
+};

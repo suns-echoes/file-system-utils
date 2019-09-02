@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { dist } from './dist.js';
+const { dist } = require('./dist.js');
 
 
 async function runDist() {

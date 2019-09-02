@@ -1,14 +1,16 @@
-import { copy } from './utils/copy.js';
-import { createFolder } from './utils/create-folder.js';
-import { isFile } from './utils/is-file.js';
-import { isFolder } from './utils/is-folder.js';
-import { listFiles } from './utils/list-files.js';
-import { readJSONFile } from './utils/read-json-file.js';
-import { remove } from './utils/remove.js';
-import { writeJSONFile } from './utils/write-json-file.js';
+'use strict';
+
+const { copy } = require('./utils/copy.js');
+const { createFolder } = require('./utils/create-folder.js');
+const { isFile } = require('./utils/is-file.js');
+const { isFolder } = require('./utils/is-folder.js');
+const { listFiles } = require('./utils/list-files.js');
+const { readJSONFile } = require('./utils/read-json-file.js');
+const { remove } = require('./utils/remove.js');
+const { writeJSONFile } = require('./utils/write-json-file.js');
 
 
-export const FileSystemUtils = {
+module.exports.FileSystemUtils = {
 	copy,
 	createFolder,
 	isFile,

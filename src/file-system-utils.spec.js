@@ -1,7 +1,9 @@
+'use strict';
+
 const fs = require('fs');
 const { promisify } = require('util');
 
-import { FileSystemUtils } from './file-system-utils.js';
+const { FileSystemUtils } = require('./file-system-utils.js');
 
 
 const readdir = promisify(fs.readdir);
@@ -14,7 +16,7 @@ async function findMethods() {
 
 	for (const entity of entities) {
 		if (matchNonSpecFiles.test(entity)) {
-			const module = await import(`./utils/${entity}`);
+			const module = require(`./utils/${entity}`);
 			const keys = Object.keys(module);
 
 			keys.forEach((key) => {

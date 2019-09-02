@@ -1,13 +1,13 @@
-import { runLinter } from './utils/run-linter.js';
-import { runTests } from './utils/run-tests.js';
-import { cleanup } from './utils/cleanup.js';
-import { createPackageFile } from './utils/create-package-file.js';
-import { packModules } from './utils/pack-modules.js';
-import { copySourceFiles } from './utils/copy-source-files.js';
-import { copyDocumentationFiles } from './utils/copy-documentation-files.js';
+const { runLinter } = require('./utils/run-linter.js');
+const { runTests } = require('./utils/run-tests.js');
+const { cleanup } = require('./utils/cleanup.js');
+const { createPackageFile } = require('./utils/create-package-file.js');
+const { packModules } = require('./utils/pack-modules.js');
+const { copySourceFiles } = require('./utils/copy-source-files.js');
+const { copyDocumentationFiles } = require('./utils/copy-documentation-files.js');
 
 
-export const dist = {
+module.exports.dist = {
 	runLinter,
 	runTests,
 	cleanup,

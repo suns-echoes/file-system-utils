@@ -1,6 +1,6 @@
 const { copy } = require('fs-extra');
 
-import { config } from '../config.js';
+const { config } = require('../config.js');
 
 
 const filter = (src) => {
@@ -8,6 +8,6 @@ const filter = (src) => {
 };
 
 
-export async function copySourceFiles() {
+module.exports.copySourceFiles = async function () {
 	await copy(config.paths.src.input, config.paths.src.output, { filter });
-}
+};

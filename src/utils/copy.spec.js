@@ -1,10 +1,12 @@
+'use strict';
+
 const fs = require('fs');
 const { join } = require('path');
 const { promisify } = require('util');
 
 const { pathExists, mkdirs, remove } = require('fs-extra');
 
-import { copy } from './copy.js';
+const { copy } = require('./copy.js');
 
 
 const symlink = promisify(fs.symlink);

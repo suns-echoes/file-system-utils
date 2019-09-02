@@ -1,10 +1,10 @@
-import { exec } from '@suns-echoes/exec/src/exec.js';
+const { exec } = require('@suns-echoes/exec/src/exec.js');
 
 
-export async function runLinter() {
+module.exports.runLinter = async function () {
 	const { code, output } = await exec('npm', ['run', 'lint']);
 
 	if (code !== 0) {
 		throw output;
 	}
-}
+};
