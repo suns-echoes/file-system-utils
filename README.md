@@ -45,6 +45,7 @@ Methods
 * [createFolder](./docs/utils/create-folder.md)
 * [isFile](./docs/utils/is-file.md)
 * [isFolder](./docs/utils/is-folder.md)
+* [listFiles](./docs/utils/list-files.md)
 * [readJSONFile](./docs/utils/read-json-file.md)
 * [remove](./docs/utils/remove.md)
 * [writeJSONFile](./docs/utils/write-json-file.md)

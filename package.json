@@ -1,6 +1,6 @@
 {
   "name": "@suns-echoes/file-system-utils",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "File System Utilities Library",
   "scripts": {
     "coverage": "cross-env NODE_ENV=test nyc mocha",
