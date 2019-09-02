@@ -25,7 +25,7 @@ async function _copy(src, dest, filter) {
 			const destsubpath = join(dest, entity);
 
 			if (!filter || filter(srcsubpath, destsubpath)) {
-				await _copy(srcsubpath, destsubpath);
+				await _copy(srcsubpath, destsubpath, filter);
 			}
 		}
 	}
