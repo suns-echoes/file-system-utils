@@ -35,5 +35,5 @@ Examples
 
 ```js
 // read file
-const data = await StringUtils.readJSONFile('data.json');
+const data = await StringUtils.readJSONFile('file.json');
 ```
