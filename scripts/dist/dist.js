@@ -1,3 +1,4 @@
+const { hints } = require('./utils/hints.js');
 const { runLinter } = require('./utils/run-linter.js');
 const { runTests } = require('./utils/run-tests.js');
 const { cleanup } = require('./utils/cleanup.js');
@@ -8,6 +9,7 @@ const { copyDocumentationFiles } = require('./utils/copy-documentation-files.js'
 
 
 module.exports.dist = {
+	hints,
 	runLinter,
 	runTests,
 	cleanup,

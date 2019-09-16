@@ -7,6 +7,8 @@ async function runDist() {
 	console.log('PREPARING DISTRIBUTION FILES');
 	console.log('');
 
+	dist.hints();
+
 	console.log(' - Run linter');
 	await dist.runLinter();
 
