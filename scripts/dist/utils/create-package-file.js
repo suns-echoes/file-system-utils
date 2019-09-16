@@ -10,6 +10,7 @@ const writeFile = promisify(fs.writeFile);
 
 const whitelist = [
 	'name',
+	'main',
 	'version',
 	'description',
 	'homepage',
