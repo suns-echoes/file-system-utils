@@ -9,7 +9,7 @@ const lstat = promisify(fs.lstat);
 const readdir = promisify(fs.readdir);
 
 
-async function _listFiles(path, filelist) {
+async function _listFiles(path, depth, fileList) {
 	const entities = await readdir(path);
 
 	for (const entity of entities) {
@@ -17,29 +17,30 @@ async function _listFiles(path, filelist) {
 		const stat = await lstat(subpath);
 
 		if (stat.isFile()) {
-			filelist.push(subpath);
+			fileList.push(subpath);
 		}
 		else if (stat.isDirectory()) {
-			await _listFiles(subpath, filelist);
+			if (depth !== 0) {
+				await _listFiles(subpath, depth - 1, fileList);
+			}
 		}
 	}
 
-	return filelist;
+	return fileList;
 }
 
 
 /**
- * Method list all files in given folder and subfolders.
+ * Method lists all files in provided path and it's subfolders.
  * @async @method listFiles
- * @param {string} path - path to list
+ * @param {string} path - path to folder
+ * @param {number} [depth=-1] - maximum subfolders scan depth
  * @returns {Promise} - the promise of list
  */
-module.exports.listFiles = async function (path) {
+module.exports.listFiles = async function (path, depth = -1) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
 
-	const filelist = [];
-
-	return _listFiles(path, filelist);
+	return await _listFiles(path, depth, []);
 };

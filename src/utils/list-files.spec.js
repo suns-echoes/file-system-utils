@@ -14,7 +14,7 @@ const writeFile = promisify(fs.writeFile);
 
 
 describe('listFiles', () => {
-	const rootpath = './temp/.spec';
+	const rootpath = join('temp', '.spec');
 
 	beforeEach(async () => {
 		await mkdirs(rootpath);
@@ -25,7 +25,7 @@ describe('listFiles', () => {
 	});
 
 	it('returns list of files', async () => {
-		const subfolderpath = join(rootpath, 'symlink');
+		const subfolderpath = join(rootpath, 'subfolder');
 
 		await mkdirs(subfolderpath);
 
@@ -35,11 +35,29 @@ describe('listFiles', () => {
 		await writeFile(filepath1, '');
 		await writeFile(filepath2, '');
 
-		const filelist = await listFiles(rootpath);
+		const fileList = await listFiles(rootpath);
 
-		expect(filelist).to.be.eql([
+		expect(fileList).to.be.eql([
 			filepath1,
 			filepath2,
+		]);
+	});
+
+	it('return list of files with depth = 0', async () => {
+		const subfolderpath = join(rootpath, 'subfolder');
+
+		await mkdirs(subfolderpath);
+
+		const filepath1 = join(rootpath, 'file1.ext');
+		const filepath2 = join(subfolderpath, 'file2.ext');
+
+		await writeFile(filepath1, '');
+		await writeFile(filepath2, '');
+
+		const fileList = await listFiles(rootpath, 0);
+
+		expect(fileList).to.be.eql([
+			filepath1,
 		]);
 	});
 
@@ -50,9 +68,9 @@ describe('listFiles', () => {
 		await writeFile(filepath, '');
 		await symlink(filepath, symlinkpath);
 
-		const filelist = await listFiles(rootpath);
+		const fileList = await listFiles(rootpath);
 
-		expect(filelist).to.be.eql([
+		expect(fileList).to.be.eql([
 			filepath,
 		]);
 	});

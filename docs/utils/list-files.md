@@ -1,13 +1,14 @@
 List files
 ==========
 
-Method list all files in given folder and subfolders.
+Method lists all files in provided path and it's subfolders.
 
 Note: *Symlinks are skipped.*
 
 ```js
 /* Promise */ FileSystemUtils.listFiles(
 	/* string */ path
+	/* number */ depth
 )
 ```
 
@@ -15,7 +16,8 @@ Note: *Symlinks are skipped.*
 Arguments
 ---------
 
-* `<string>` `path` - path to list.
+* `<string>` `path` - path to list;
+* `<number>` `[depth=-1]` - optional, default is -1, maximum subfolders scan depth.
 
 
 Returns
@@ -27,10 +29,11 @@ Returns
 Examples
 --------
 
-### copy file
+### list files
 
 ```js
 // list all files
-await FileSystemUtils.listFiles(
+const list = await FileSystemUtils.listFiles(
 	'path/to/folder'
 );
+```
