@@ -46,6 +46,7 @@ Methods
 * [isFile](./docs/utils/is-file.md)
 * [isFolder](./docs/utils/is-folder.md)
 * [listFiles](./docs/utils/list-files.md)
+* [readFolder](./docs/utils/read-folder.md)
 * [readJSONFile](./docs/utils/read-json-file.md)
 * [readTextFile](./docs/utils/read-text-file.md)
 * [remove](./docs/utils/remove.md)
