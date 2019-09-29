@@ -1,12 +1,12 @@
-const { join } = require('path');
+import { join } from 'path';
 
-const { copy } = require('fs-extra');
+import { copy } from 'fs-extra';
 
-const { config } = require('../config.js');
+import { config } from '../config';
 
 
-module.exports.copyDocumentationFiles = async function () {
+export async function copyDocumentationFiles() {
 	await copy('LICENSE', join(config.paths.dist, 'LICENSE'));
 	await copy('README.md', join(config.paths.dist, 'README.md'));
 	await copy(config.paths.docs.input, config.paths.docs.output);
-};
+}

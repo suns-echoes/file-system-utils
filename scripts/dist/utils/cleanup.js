@@ -1,8 +1,8 @@
-const { remove } = require('fs-extra');
+import { remove } from 'fs-extra';
 
-const { config } = require('../config.js');
+import { config } from '../config';
 
 
-module.exports.cleanup = async function () {
+export async function cleanup() {
 	await remove(config.paths.dist);
-};
+}

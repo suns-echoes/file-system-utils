@@ -1,12 +1,10 @@
-'use strict';
+import fs from 'fs';
+import { basename, join } from 'path';
+import { promisify } from 'util';
 
-const fs = require('fs');
-const { basename, join } = require('path');
-const { promisify } = require('util');
-
-const { createFolder } = require('./create-folder.js');
-const { isFile } = require('./is-file.js');
-const { isFolder } = require('./is-folder.js');
+import { createFolder } from './create-folder';
+import { isFile } from './is-file';
+import { isFolder } from './is-folder';
 
 
 const copyFile = promisify(fs.copyFile);
@@ -45,7 +43,7 @@ async function _copy(src, dest, filter) {
  * @param {function|regexp} [filter] - copy if function or regexp test returns true
  * @returns {Promise} - the promise of copy
  */
-module.exports.copy = async function (src, dest, filter) {
+export async function copy(src, dest, filter) {
 	let copyDest = dest;
 	let copyFilter = filter;
 
@@ -78,4 +76,4 @@ module.exports.copy = async function (src, dest, filter) {
 	}
 
 	await _copy(src, copyDest, copyFilter);
-};
+}

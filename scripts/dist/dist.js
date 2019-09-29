@@ -1,14 +1,15 @@
-const { hints } = require('./utils/hints.js');
-const { runLinter } = require('./utils/run-linter.js');
-const { runTests } = require('./utils/run-tests.js');
-const { cleanup } = require('./utils/cleanup.js');
-const { createPackageFile } = require('./utils/create-package-file.js');
-const { packModules } = require('./utils/pack-modules.js');
-const { copySourceFiles } = require('./utils/copy-source-files.js');
-const { copyDocumentationFiles } = require('./utils/copy-documentation-files.js');
+import { hints } from './utils/hints';
+import { runLinter } from './utils/run-linter';
+import { runTests } from './utils/run-tests';
+import { cleanup } from './utils/cleanup';
+import { createPackageFile } from './utils/create-package-file';
+import { packModules } from './utils/pack-modules';
+import { copySourceFiles } from './utils/copy-source-files';
+import { transformModulesIntoCJS } from './utils/transform-modules-into-cjs';
+import { copyDocumentationFiles } from './utils/copy-documentation-files';
 
 
-module.exports.dist = {
+export const dist = {
 	hints,
 	runLinter,
 	runTests,
@@ -16,5 +17,6 @@ module.exports.dist = {
 	createPackageFile,
 	packModules,
 	copySourceFiles,
+	transformModulesIntoCJS,
 	copyDocumentationFiles,
 };

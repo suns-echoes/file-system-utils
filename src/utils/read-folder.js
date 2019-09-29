@@ -1,6 +1,6 @@
-const fs = require('fs');
-const { join } = require('path');
-const { promisify } = require('util');
+import fs from 'fs';
+import { join } from 'path';
+import { promisify } from 'util';
 
 
 const lstat = promisify(fs.lstat);
@@ -44,7 +44,7 @@ async function _readFolder(path, depth, incFiles, incFolders, entityList) {
  * @param {boolean} [options.incFolders=true] - include folders
  * @returns {Promise} - the promise of list
  */
-module.exports.readFolder = async function readFolder(path, depth = -1, options = {}) {
+export async function readFolder(path, depth = -1, options = {}) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"path" is not a string');
 	}
@@ -74,4 +74,4 @@ module.exports.readFolder = async function readFolder(path, depth = -1, options 
 	else {
 		throw new Error('the specified path is not a folder');
 	}
-};
+}

@@ -1,10 +1,8 @@
-'use strict';
+import fs from 'fs';
+import { dirname } from 'path';
+import { promisify } from 'util';
 
-const fs = require('fs');
-const { dirname } = require('path');
-const { promisify } = require('util');
-
-const { createFolder } = require('./create-folder.js');
+import { createFolder } from './create-folder';
 
 
 const writeFile = promisify(fs.writeFile);
@@ -28,10 +26,10 @@ async function _writeJSONFile(filepath, data, replacer, space) {
  * @param {string} [space] - indent space for JSON stringify
  * @returns {Promise}
  */
-module.exports.writeJSONFile = async function (filepath, data, replacer, space) {
+export async function writeJSONFile(filepath, data, replacer, space) {
 	if (typeof filepath !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
 
 	return await _writeJSONFile(filepath, data, replacer, space);
-};
+}

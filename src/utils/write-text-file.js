@@ -1,10 +1,8 @@
-'use strict';
+import fs from 'fs';
+import { dirname } from 'path';
+import { promisify } from 'util';
 
-const fs = require('fs');
-const { dirname } = require('path');
-const { promisify } = require('util');
-
-const { createFolder } = require('./create-folder.js');
+import { createFolder } from './create-folder';
 
 
 const writeFile = promisify(fs.writeFile);
@@ -26,10 +24,10 @@ async function _writeTextFile(filepath, content, encoding) {
  * @param {string} [encoding='utf8'] - content encoding
  * @returns {Promise}
  */
-module.exports.writeTextFile = async function (filepath, content, encoding) {
+export async function writeTextFile(filepath, content, encoding) {
 	if (typeof filepath !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
 
 	return await _writeTextFile(filepath, content, encoding);
-};
+}

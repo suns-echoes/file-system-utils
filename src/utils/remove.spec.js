@@ -1,12 +1,10 @@
-'use strict';
+import fs from 'fs';
+import { join } from 'path';
+import { promisify } from 'util';
 
-const fs = require('fs');
-const { join } = require('path');
-const { promisify } = require('util');
+import { mkdirs, pathExists, remove as fseRemove } from 'fs-extra';
 
-const { mkdirs, pathExists, remove: fseRemove } = require('fs-extra');
-
-const { remove } = require('./remove.js');
+import { remove } from './remove';
 
 
 const writeFile = promisify(fs.writeFile);
@@ -59,7 +57,49 @@ describe('remove', () => {
 		expect(exists).to.be.false;
 	});
 
-	it('removes non existing folder', async () => {
+	it('copies filtered entities (function)', async () => {
+		const path = join(rootpath, 'subpath');
+		const badfilename = 'bad-file.ext';
+		const goodfilename = 'good-file.ext';
+
+		function filter(path) {
+			return path.indexOf('bad') !== -1;
+		}
+
+		await mkdirs(path);
+		await writeFile(join(path, badfilename), '');
+		await writeFile(join(path, goodfilename), '');
+
+		await remove(path, filter);
+
+		const badExists = await pathExists(join(path, badfilename));
+		const goodExists = await pathExists(join(path, goodfilename));
+
+		expect(badExists).to.be.false;
+		expect(goodExists).to.be.true;
+	});
+
+	it('copies filtered entities (regexp)', async () => {
+		const path = join(rootpath, 'subpath');
+		const badfilename = 'bad-file.ext';
+		const goodfilename = 'good-file.ext';
+
+		const filter = /^.*bad.*$/;
+
+		await mkdirs(path);
+		await writeFile(join(path, badfilename), '');
+		await writeFile(join(path, goodfilename), '');
+
+		await remove(path, filter);
+
+		const badExists = await pathExists(join(path, badfilename));
+		const goodExists = await pathExists(join(path, goodfilename));
+
+		expect(badExists).to.be.false;
+		expect(goodExists).to.be.true;
+	});
+
+	it('continues non existing folder', async () => {
 		const dirpath = join(rootpath, 'non', 'existing', 'folder');
 
 		await remove(dirpath);
@@ -99,6 +139,14 @@ describe('remove', () => {
 				if (error) {
 					throw error;
 				}
+			}
+
+			return expect(fail()).be.rejected;
+		});
+
+		it('"filter" is not a function nor regexp', async () => {
+			async function fail() {
+				await remove('path', null);
 			}
 
 			return expect(fail()).be.rejected;

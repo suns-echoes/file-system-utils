@@ -1,7 +1,5 @@
-'use strict';
-
-const fs = require('fs');
-const { promisify } = require('util');
+import fs from 'fs';
+import { promisify } from 'util';
 
 
 const lstat = promisify(fs.lstat);
@@ -25,10 +23,10 @@ async function _isFolder(path) {
  * @param {string} path - entity path
  * @returns {Promise} - the promise of check
  */
-module.exports.isFolder = async function (path) {
+export async function isFolder(path) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"path" is not a string');
 	}
 
 	return await _isFolder(path);
-};
+}

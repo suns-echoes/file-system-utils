@@ -1,7 +1,5 @@
-'use strict';
-
-const fs = require('fs');
-const { promisify } = require('util');
+import fs from 'fs';
+import { promisify } from 'util';
 
 
 const readFile = promisify(fs.readFile);
@@ -33,10 +31,10 @@ async function _readTextFile(filepath, encoding) {
  * @param {string} [encoding='utf8'] - content encoding
  * @returns {string} - file content
  */
-module.exports.readTextFile = async function (filepath, encoding = 'utf8') {
+export async function readTextFile(filepath, encoding = 'utf8') {
 	if (typeof filepath !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
 
 	return await _readTextFile(filepath, encoding);
-};
+}

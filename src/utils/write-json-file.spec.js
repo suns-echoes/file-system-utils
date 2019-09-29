@@ -1,8 +1,6 @@
-'use strict';
+import { mkdirs, readJson, remove } from 'fs-extra';
 
-const { mkdirs, readJson, remove } = require('fs-extra');
-
-const { writeJSONFile } = require('./write-json-file.js');
+import { writeJSONFile } from './write-json-file';
 
 
 describe('writeJSONFile', () => {

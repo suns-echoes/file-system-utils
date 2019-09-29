@@ -1,4 +1,4 @@
-module.exports.hints = function () {
+export function hints() {
 	/* eslint-disable no-console */
 
 	console.log('╔═══════════════════════════════╗');
@@ -6,7 +6,10 @@ module.exports.hints = function () {
 	console.log('╠═══════════════════════════════╣');
 	console.log('║ * update package version      ║');
 	console.log('║ * add doc files               ║');
+	console.log('║ * add docjs comments          ║');
 	console.log('║ * update README               ║');
 	console.log('╚═══════════════════════════════╝');
 	console.log('');
-};
+
+	/* eslint-enable no-console */
+}

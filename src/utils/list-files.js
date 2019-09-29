@@ -1,8 +1,6 @@
-'use strict';
-
-const fs = require('fs');
-const { join } = require('path');
-const { promisify } = require('util');
+import fs from 'fs';
+import { join } from 'path';
+import { promisify } from 'util';
 
 
 const lstat = promisify(fs.lstat);
@@ -37,10 +35,10 @@ async function _listFiles(path, depth, fileList) {
  * @param {number} [depth=-1] - maximum subfolders scan depth
  * @returns {Promise} - the promise of list
  */
-module.exports.listFiles = async function (path, depth = -1) {
+export async function listFiles(path, depth = -1) {
 	if (typeof path !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
 
 	return await _listFiles(path, depth, []);
-};
+}

@@ -1,9 +1,7 @@
-'use strict';
+import fs from 'fs';
+import { promisify } from 'util';
 
-const fs = require('fs');
-const { promisify } = require('util');
-
-const { FileSystemUtils } = require('./file-system-utils.js');
+import { FileSystemUtils } from './file-system-utils';
 
 
 const readdir = promisify(fs.readdir);

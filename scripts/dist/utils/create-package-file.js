@@ -1,7 +1,7 @@
-const fs = require('fs');
-const { promisify } = require('util');
+import fs from 'fs';
+import { promisify } from 'util';
 
-const { config } = require('../config.js');
+import { config } from '../config';
 
 
 const readFile = promisify(fs.readFile);
@@ -21,7 +21,7 @@ const whitelist = [
 ];
 
 
-module.exports.createPackageFile = async function createPackageFile() {
+export async function createPackageFile() {
 	const pkgFile = await readFile('./package.json', 'utf8');
 	const pkg = JSON.parse(pkgFile);
 
@@ -34,4 +34,4 @@ module.exports.createPackageFile = async function createPackageFile() {
 	const data = JSON.stringify(pkg, null, '  ');
 
 	await writeFile(`${config.paths.dist}/package.json`, data, { encoding: 'utf8' });
-};
+}

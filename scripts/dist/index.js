@@ -1,8 +1,9 @@
-/* eslint-disable no-console */
-const { dist } = require('./dist.js');
+import { dist } from './dist';
 
 
 async function runDist() {
+	/* eslint-disable no-console */
+
 	console.log('');
 	console.log('PREPARING DISTRIBUTION FILES');
 	console.log('');
@@ -27,10 +28,15 @@ async function runDist() {
 	console.log(' - Copy source files');
 	await dist.copySourceFiles();
 
+	console.log(' - Transform source files to CommonJS');
+	await dist.transformModulesIntoCJS();
+
 	console.log(' - Copy documentation files');
 	await dist.copyDocumentationFiles();
 
 	console.log('');
+
+	/* eslint-enable no-console */
 }
 
 

@@ -1,10 +1,10 @@
-const { exec } = require('@suns-echoes/exec/src/exec.js');
+import { exec } from '@suns-echoes/exec/src/exec';
 
 
-module.exports.runTests = async function () {
+export async function runTests() {
 	const { code, output } = await exec('npm', ['run', 'coverage']);
 
 	if (code !== 0) {
 		throw output;
 	}
-};
+}

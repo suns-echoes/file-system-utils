@@ -1,6 +1,6 @@
-const { copy } = require('fs-extra');
+import { copy } from 'fs-extra';
 
-const { config } = require('../config.js');
+import { config } from '../config';
 
 
 const isFolder = (src) => (/(?:^|[\\/])[^\\/.]+$/.test(src));
@@ -18,6 +18,6 @@ const filter = (src) => {
 };
 
 
-module.exports.copySourceFiles = async function () {
+export async function copySourceFiles() {
 	await copy(config.paths.src.input, config.paths.src.output, { filter });
-};
+}
