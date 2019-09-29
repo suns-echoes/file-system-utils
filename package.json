@@ -8,8 +8,8 @@
     "test": "mocha",
     "test:watch": "cross-env NODE_ENV=test mocha --watch",
     "lint": "eslint .",
-	"dist": "node -r esm scripts/dist",
-	"release": "npm run dist && cd dist && npm publish"
+    "dist": "node -r esm scripts/dist",
+    "release": "npm run dist && cd dist && npm publish"
   },
   "homepage": "https://github.com/suns-echoes/file-system-utils",
   "repository": {
@@ -38,7 +38,6 @@
     "chai-autoload-plugins": "^0.1.0",
     "cross-env": "^5.2.0",
     "eslint": "^6.2.2",
-    "eslint-plugin-import": "^2.18.2",
     "esm": "^3.2.25",
     "fs-extra": "^8.1.0",
     "mocha": "^6.2.0",

@@ -17,7 +17,6 @@
 		"ecmaVersion": 6,
 		"sourceType": "module"
 	},
-	"plugins": ["eslint-plugin-import"],
 	"rules": {
 		"arrow-parens": ["error", "always"],
 		"brace-style": ["error", "stroustrup"],
@@ -28,7 +27,6 @@
 		"eol-last": ["error", "always"],
 		"eqeqeq": ["error", "always"],
 		"func-call-spacing": ["error", "never"],
-		"import/extensions": ["error", "always"],
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"key-spacing": ["error", { "afterColon": true }],
 		"keyword-spacing": ["error", { "after": true, "before": true }],
