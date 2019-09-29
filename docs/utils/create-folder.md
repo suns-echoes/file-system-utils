@@ -3,21 +3,21 @@ Create folder
 
 Method creates single folder or nested folders according to given path.
 
+
+Usage
+-----
+
 ```js
-/* Promise */ StringUtils.createFolder(
-	/* string */ path
-)
+await FileSystemUtils.createFolder(path);
 ```
 
 
-Arguments
----------
+### Arguments
 
 * `<string>` `path` - path to create.
 
 
-Returns
--------
+### Returns
 
 * `<Promise>` - the promise of folder creation.
 
@@ -25,14 +25,14 @@ Returns
 Examples
 --------
 
-```js
-// create folder
-await StringUtils.createFolder(
-	'new-folder'
-);
+### create folder
 
-// create path (nested folders)
-await StringUtils.createFolder(
-	'new/nested/folders'
-);
+```js
+await FileSystemUtils.createFolder('new-folder');
+```
+
+### create path (nested folders)
+
+```js
+await FileSystemUtils.createFolder('new/nested/folders');
 ```

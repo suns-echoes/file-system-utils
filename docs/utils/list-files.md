@@ -5,25 +5,30 @@ Method lists all files in provided path and it's subfolders.
 
 Note: *Symlinks are skipped.*
 
+
+Usage
+-----
+
 ```js
-/* Promise */ FileSystemUtils.listFiles(
-	/* string */ path
-	/* number */ depth
+const fileList = await FileSystemUtils.listFiles(path, depth);
 )
 ```
 
 
-Arguments
----------
+### Arguments
 
 * `<string>` `path` - path to list;
-* `<number>` `[depth=-1]` - optional, default is -1, maximum subfolders scan depth.
+* `<number>` `[depth=-1]` - optional, maximum subfolders scan depth (def.: -1).
 
 
-Returns
--------
+### Returns
 
 * `<Promise>` - the promise of list.
+
+
+### Resolves
+
+* `<array>` - list of files.
 
 
 Examples
@@ -33,7 +38,5 @@ Examples
 
 ```js
 // list all files
-const list = await FileSystemUtils.listFiles(
-	'path/to/folder'
-);
+const list = await FileSystemUtils.listFiles('path/to/folder');
 ```

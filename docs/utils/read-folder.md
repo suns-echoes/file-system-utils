@@ -5,29 +5,39 @@ Method lists all files and folder in provided path and it's subfolders.
 
 Note: *Symlinks are skipped.*
 
+
+Usage
+-----
+
 ```js
-/* Promise */ FileSystemUtils.readFolder(
-	/* string */ path,
-	/* number */ depth,
-	/* object */ options
-)
+const { files, folders } = await FileSystemUtils.readFolder(path, depth, { incFiles, incFolders });
 ```
 
 
-Arguments
----------
+### Arguments
 
 * `<string>` `path` - path to list;
-* `<number>` `[depth=-1]` - optional, default is -1, maximum subfolders scan depth;
+* `<number>` `[depth=-1]` - optional, maximum subfolders scan depth, (def.: -1);
 * `<object>` `[options]` - optional, additional options;
-* `<boolean>` `[options.incFiles=true]` - optional, default is true, include files;
-* `<boolean>` `[options.incFolders=true]` - optional, default is true, include folders.
+* `<boolean>` `[options.incFiles=true]` - optional, include files (def.: true);
+* `<boolean>` `[options.incFolders=true]` - optional, include folders (def.: true).
 
 
-Returns
--------
+### Returns
 
 * `<Promise>` - the promise of list.
+
+
+### Resolves
+
+* `<object>` - lists of `files` and `folders`.
+
+```js
+{
+	files: [...] || null,
+	folders: [...] || null,
+}
+```
 
 
 Examples
@@ -37,14 +47,8 @@ Examples
 
 ```js
 // list all files and folders
-const list = await FileSystemUtils.readFolder(
-	'path/to/folder'
-);
+const { files, folders } = await FileSystemUtils.readFolder('path/to/folder');
 
 // list all files only, no deeper than 2 levels (root is level 0)
-const list = await FileSystemUtils.readFolder(
-	'path/to/folder',
-	2,
-	{ incFolders: false }
-);
+const { files } = await FileSystemUtils.readFolder('path/to/folder', 2, { incFolders: false });
 ```

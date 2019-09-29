@@ -5,41 +5,40 @@ Method checks if entity with given path is file.
 
 Note: *Returns false if entity is symlink to file.*
 
+
+Usage
+-----
+
 ```js
-/* Promise */ FileSystemUtils.isFile(
-	/* string */ path
-)
+const pathIsFile = await FileSystemUtils.isFile(path);
 ```
 
 
-Arguments
----------
+### Arguments
 
 * `<string>` `path` - entity path.
 
 
-Returns
--------
+### Returns
 
 * `<Promise>` - the promise of check.
+
+
+### Resolves
+
+* `<boolean>` - is path a file.
 
 
 Examples
 --------
 
 ```js
-// return true if path exists
-await FileSystemUtils.isFile(
-	'path/to/file.txt'
-);
+// return true if path exists and is file
+await FileSystemUtils.isFile('path/to/file.txt');
 
 // return false
-await FileSystemUtils.isFile(
-	'path/to/folder'
-);
+await FileSystemUtils.isFile('path/to/folder');
 
 // return false if entity is symlink (even if it points to file)
-await FileSystemUtils.isFile(
-	'path/to/symlink'
-);
+await FileSystemUtils.isFile('path/to/symlink');
 ```

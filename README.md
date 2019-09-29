@@ -10,27 +10,24 @@ Installation
 `npm i @suns-echoes/file-system-utils`
 
 
-Usage
------
+Import
+------
 
 ```js
-// CommonJS library distribution file (only default export)
-import exec from '@suns-echoes/file-system-utils';
+// Import library distribution file
+import { FileSystemUtils } from '@suns-echoes/file-system-utils';
 ```
 
 ```js
-// import library from source (default export)
-import FileSystemUtils from './libs/@suns-echoes/file-system-utils/src/index';
+// import library from source
+import FileSystemUtils from '@suns-echoes/file-system-utils/src';
+// or
+import { FileSystemUtils } from '@suns-echoes/file-system-utils/src/file-system-utils';
 ```
 
 ```js
-// import library from source (named export)
-import { FileSystemUtils } from './libs/@suns-echoes/file-system-utils/src/file-system-utils';
-```
-
-```js
-// import single util from source (only named exports)
-import { isFile } from './libs/@suns-echoes/file-system-utils/src/utils/is-file';
+// import single util from source
+import { isFile } from '@suns-echoes/file-system-utils/src/utils/is-file';
 ```
 
 

@@ -7,37 +7,36 @@ Note: *Default encoding is **UTF-8**.*
 
 Note: *If file does not exist, promise will resolve with `undefined`.*
 
+
+Usage
+-----
+
 ```js
-/* Promise */ StringUtils.readTextFile(
-	/* string */ path,
-	/* string */ encoding
-)
+const data = await FileSystemUtils.readTextFile(path, encoding);
 ```
 
 
-Arguments
----------
+### Arguments
 
 * `<string>` `filepath` - file path;
-* `<string>` `[encoding=utf8]` - optional, default is UTF-8, content encoding.
+* `<string>` `[encoding=utf8]` - optional, content encoding (def.: UTF-8).
 
 
-Resolves
---------
-
-* `<string>` - file content.
-
-
-Returns
--------
+### Returns
 
 * `<Promise>` - the promise of file content read.
+
+
+### Resolves
+
+* `<string>` - file content.
 
 
 Examples
 --------
 
+### read data from text file with UTF-8 encoding
+
 ```js
-// read file
-const content = await StringUtils.readTextFile('file.txt');
+const content = await FileSystemUtils.readTextFile('file.txt');
 ```

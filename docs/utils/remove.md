@@ -5,21 +5,22 @@ Method removes file or folder with it's content.
 
 Note: *This method will not throw error if path does not exist.*
 
+
+Usage
+-----
+
 ```js
-/* Promise */ StringUtils.remove(
-	/* string */ path
-)
+await FileSystemUtils.remove(path, filter);
 ```
 
 
-Arguments
----------
+### Arguments
 
-* `<string>` `path` - path to remove.
+* `<string>` `path` - path to remove;
+* `<function|regexp>` `[filter]` - optional, remove if function or regexp test returns true.
 
 
-Returns
--------
+### Returns
 
 * `<Promise>` - the promise of entity removal.
 
@@ -27,10 +28,20 @@ Returns
 Examples
 --------
 
-```js
-// remove file
-StringUtils.remove('path/to/file.txt');
+### remove file
 
-// remove folder (with content)
-StringUtils.remove('path/to/folder');
+```js
+FileSystemUtils.remove('path/to/file.txt');
+```
+
+### remove folder (with content)
+
+```js
+FileSystemUtils.remove('path/to/folder');
+```
+
+### remove all .js files
+
+```js
+FileSystemUtils.remove('path/to/folder', /\.js$/);
 ```
