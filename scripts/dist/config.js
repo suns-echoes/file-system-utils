@@ -2,8 +2,8 @@ export const config = {
 	paths: {
 		dist: 'dist',
 		main: {
-			input: 'src/index',
-			output: 'dist/index',
+			input: 'src/index.js',
+			output: 'dist/index.js',
 		},
 		src: {
 			input: 'src',
