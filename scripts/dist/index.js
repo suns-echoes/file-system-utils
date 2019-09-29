@@ -31,6 +31,12 @@ async function runDist() {
 	console.log(' - Transform source files to CommonJS');
 	await dist.transformModulesIntoCJS();
 
+	console.log(' - Run transformation tests');
+	await dist.runTransformationTests();
+
+	console.log(' - Cleanup dist tests');
+	await dist.cleanupDistTests();
+
 	console.log(' - Copy documentation files');
 	await dist.copyDocumentationFiles();
 

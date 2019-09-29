@@ -1,10 +1,15 @@
-import { readFile, writeFile } from 'fs';
+import fs from 'fs';
+import { promisify } from 'util';
 
-import { transformESMIntoCJS } from '@suns-echoes/transform-esm-into-cjs';
+import { transformESMIntoCJS } from '@suns-echoes/transform-esm-into-cjs/src';
 
 import { findSourceFiles } from './utils/find-source-files';
 
 import { config } from '../config';
+
+
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
 
 
 export async function transformModulesIntoCJS() {

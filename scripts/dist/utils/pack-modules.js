@@ -8,10 +8,13 @@ import { config } from '../config';
 
 
 const inputOptions = {
+	external: ['fs', 'path', 'util'],
 	input: config.paths.main.input,
 	treeshake: true,
 	plugins: [
-		resolve(),
+		resolve({
+			preferBuiltins: true,
+		}),
 		commonjs(),
 		terser(config.rollup.plugins.terser),
 	],
