@@ -19,12 +19,6 @@ async function runDist() {
 	console.log(' - Cleanup dist folder');
 	await dist.cleanup();
 
-	console.log(' - Pack modules');
-	await dist.packModules();
-
-	console.log(' - Create package file');
-	await dist.createPackageFile();
-
 	console.log(' - Copy source files');
 	await dist.copySourceFiles();
 
@@ -39,6 +33,12 @@ async function runDist() {
 
 	console.log(' - Copy documentation files');
 	await dist.copyDocumentationFiles();
+
+	console.log(' - Pack modules (prepare main dist file)');
+	await dist.packModules();
+
+	console.log(' - Create package file');
+	await dist.createPackageFile();
 
 	console.log('');
 
