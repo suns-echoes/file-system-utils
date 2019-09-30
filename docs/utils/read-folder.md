@@ -31,13 +31,8 @@ const { files, folders } = await FileSystemUtils.readFolder(path, depth, { incFi
 ### Resolves
 
 * `<object>` - lists of `files` and `folders`.
-
-```js
-{
-	files: [...] || null,
-	folders: [...] || null,
-}
-```
+	* `<array>` `files` - list of files, or `null` if `incFiles=false`
+	* `<array>` `folders` - list of folders, or `null` if `incFolders=false`
 
 
 Examples
