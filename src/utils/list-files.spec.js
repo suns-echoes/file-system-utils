@@ -73,10 +73,56 @@ describe('listFiles', () => {
 		]);
 	});
 
+	it('lists filtered entities (function)', async () => {
+		const path = join(rootpath, 'src');
+		const badfilename = 'bad-file.ext';
+		const badFilePath = join(path, badfilename);
+		const goodfilename = 'good-file.ext';
+		const goodFilePath = join(path, goodfilename);
+
+		function filter(path) {
+			return path.indexOf('bad') === -1;
+		}
+
+		await mkdirs(path);
+		await writeFile(badFilePath, '');
+		await writeFile(goodFilePath, '');
+
+		const fileList = await listFiles(path, -1, filter);
+
+		expect(fileList).to.be.eql([goodFilePath]);
+	});
+
+	it('lists filtered entities (regexp)', async () => {
+		const path = join(rootpath, 'src');
+		const badfilename = 'bad-file.ext';
+		const badFilePath = join(path, badfilename);
+		const goodfilename = 'good-file.ext';
+		const goodFilePath = join(path, goodfilename);
+
+		const filter = /^((?!bad).)*$/;
+
+		await mkdirs(path);
+		await writeFile(badFilePath, '');
+		await writeFile(goodFilePath, '');
+
+		const fileList = await listFiles(path, -1, filter);
+
+		expect(fileList).to.be.eql([goodFilePath]);
+	});
+
 	describe('throws if', () => {
 		it('"path" is not a string', async () => {
 			async function fail() {
 				await listFiles(null);
+			}
+
+			return expect(fail()).be.rejected;
+		});
+
+		it('"filter" is not a function nor regexp', async () => {
+			async function fail() {
+				await listFiles('path', -1, null);
 			}
 
 			return expect(fail()).be.rejected;
