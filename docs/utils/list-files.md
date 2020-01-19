@@ -18,8 +18,10 @@ const fileList = await FileSystemUtils.listFiles(path, depth, filter);
 ### Arguments
 
 * `<string>` `path` - path to list;
-* `<number>` `[depth=-1]` - optional, maximum subfolders scan depth (def.: -1);
-* `<function|regexp>` `[filter]` - optional, copy if function or regexp test returns true.
+* `<object>` `options` - additional options
+	* `<boolean>` `[absolutePaths=false]` - optional, return absolute paths (def.: false);
+	* `<number>` `[depth=-1]` - optional, maximum subfolders scan depth (def.: -1);
+	* `<function|regexp>` `[filter]` - optional, copy if function or regexp test returns true.
 
 
 ### Returns
@@ -50,5 +52,5 @@ function filter(src) {
 	return !(/\.spec\.js$/.test(src));
 }
 
-await FileSystemUtils.listFiles('path', -1, filter);
+await FileSystemUtils.listFiles('path', { depth: 3, filter });
 ```

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { join } from 'path';
+import { join, resolve } from 'path';
 import { promisify } from 'util';
 
 import { mkdirs, remove } from 'fs-extra';
@@ -41,6 +41,25 @@ describe('listFiles', () => {
 		]);
 	});
 
+	it('returns list of files with absolute paths', async () => {
+		const subfolderpath = join(rootpath, 'subfolder');
+
+		await mkdirs(subfolderpath);
+
+		const filepath1 = join(rootpath, 'file1.ext');
+		const filepath2 = join(subfolderpath, 'file2.ext');
+
+		await writeFile(filepath1, '');
+		await writeFile(filepath2, '');
+
+		const fileList = await listFiles(rootpath, { absolutePaths: true });
+
+		expect(fileList).to.be.eql([
+			resolve(filepath1),
+			resolve(filepath2),
+		]);
+	});
+
 	it('return list of files with depth = 0', async () => {
 		const subfolderpath = join(rootpath, 'subfolder');
 
@@ -52,7 +71,7 @@ describe('listFiles', () => {
 		await writeFile(filepath1, '');
 		await writeFile(filepath2, '');
 
-		const fileList = await listFiles(rootpath, 0);
+		const fileList = await listFiles(rootpath, { depth: 0 });
 
 		expect(fileList).to.be.eql([
 			filepath1,
@@ -88,7 +107,7 @@ describe('listFiles', () => {
 		await writeFile(badFilePath, '');
 		await writeFile(goodFilePath, '');
 
-		const fileList = await listFiles(path, -1, filter);
+		const fileList = await listFiles(path, { filter });
 
 		expect(fileList).to.be.eql([goodFilePath]);
 	});
@@ -106,7 +125,7 @@ describe('listFiles', () => {
 		await writeFile(badFilePath, '');
 		await writeFile(goodFilePath, '');
 
-		const fileList = await listFiles(path, -1, filter);
+		const fileList = await listFiles(path, { filter });
 
 		expect(fileList).to.be.eql([goodFilePath]);
 	});
@@ -120,9 +139,33 @@ describe('listFiles', () => {
 			return expect(fail()).be.rejected;
 		});
 
-		it('"filter" is not a function nor regexp', async () => {
+		it('"options" is not an object', async () => {
 			async function fail() {
-				await listFiles('path', -1, null);
+				await listFiles('.', null);
+			}
+
+			return expect(fail()).be.rejected;
+		});
+
+		it('"options.absolutePaths" is not a boolean', async () => {
+			async function fail() {
+				await listFiles('.', { absolutePaths: null });
+			}
+
+			return expect(fail()).be.rejected;
+		});
+
+		it('"options.depth" is not a number', async () => {
+			async function fail() {
+				await listFiles('.', { depth: null });
+			}
+
+			return expect(fail()).be.rejected;
+		});
+
+		it('"options.filter" is not a function nor regexp', async () => {
+			async function fail() {
+				await listFiles('path', { filter: null });
 			}
 
 			return expect(fail()).be.rejected;

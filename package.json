@@ -1,7 +1,7 @@
 {
   "name": "@suns-echoes/file-system-utils",
   "main": "index.js",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "File System Utilities Library",
   "scripts": {
     "coverage": "cross-env NODE_ENV=test nyc mocha --config .mocharc.src.json",
