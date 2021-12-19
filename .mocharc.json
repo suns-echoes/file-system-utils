@@ -1,0 +1,10 @@
+{
+	"colors": true,
+	"exclude": [
+		"**/__skip__/**/*.spec.ts"
+	],
+	"reporter": "spec",
+	"spec": [
+		"src/**/*.spec.ts"
+	]
+}

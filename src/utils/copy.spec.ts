@@ -1,15 +1,9 @@
-import fs from 'fs';
+import { symlink, writeFile } from 'fs/promises';
 import { join } from 'path';
-import { promisify } from 'util';
 
 import { pathExists, mkdirs, remove } from 'fs-extra';
 
 import { copy } from './copy';
-
-
-const symlink = promisify(fs.symlink);
-const writeFile = promisify(fs.writeFile);
-
 
 describe('copy', () => {
 	const rootpath = './temp/.spec';
@@ -93,9 +87,9 @@ describe('copy', () => {
 		const badfilename = 'bad-file.ext';
 		const goodfilename = 'good-file.ext';
 
-		function filter(src) {
+		const filter = (src: string): boolean => {
 			return src.indexOf('bad') === -1;
-		}
+		};
 
 		await mkdirs(srcpath);
 		await writeFile(join(srcpath, badfilename), '');
@@ -148,37 +142,11 @@ describe('copy', () => {
 		expect(symlinkExists).to.be.false;
 	});
 
-	describe('throws if', () => {
-		it('"src" is not a string', async () => {
-			async function fail() {
-				await copy(null, 'temp');
-			}
+	it('throws if "src" and "dest" are the same', async () => {
+		const fail = async (): Promise<void> => {
+			await copy('path', 'path');
+		};
 
-			return expect(fail()).be.rejected;
-		});
-
-		it('"dest" is not a string', async () => {
-			async function fail() {
-				await copy('src', null);
-			}
-
-			return expect(fail()).be.rejected;
-		});
-
-		it('"src" and "dest" are the same', async () => {
-			async function fail() {
-				await copy('path', 'path');
-			}
-
-			return expect(fail()).be.rejected;
-		});
-
-		it('"filter" is not a function nor regexp', async () => {
-			async function fail() {
-				await copy('src', 'path', null);
-			}
-
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
 	});
 });

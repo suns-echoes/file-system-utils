@@ -1,17 +1,12 @@
-File System Utilities
-=====================
+# The file system utilities library
 
 `file-system-utils` library add file system methods which simplifies files read/write/delete, folders create/remove and more.
 
-
-Installation
-------------
+## Installation
 
 `npm i @suns-echoes/file-system-utils`
 
-
-Import
-------
+## Import
 
 ```js
 // Import library distribution file
@@ -30,9 +25,7 @@ import { FileSystemUtils } from '@suns-echoes/file-system-utils/src/file-system-
 import { isFile } from '@suns-echoes/file-system-utils/src/utils/is-file';
 ```
 
-
-Methods
--------
+## Methods
 
 ### Async
 
@@ -52,10 +45,8 @@ Methods
 
 * *None by now, use **async** ;)*
 
-
-License
--------
+## License
 
 Licensed under MIT
 
-Copyright (c) 2019 Aneta Suns
+Copyright (c) 2019-2021 Aneta Suns

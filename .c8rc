@@ -1,0 +1,28 @@
+{
+	"all": true,
+	"cache": false,
+	"check-coverage": true,
+	"exclude": [
+		"**/__skip__",
+		"**/*.spec.js",
+		"**/*.spec.ts",
+		"**/*.d.ts"
+	],
+	"excludeNodeModules": true,
+	"include": [
+		"src/**/*.js",
+		"src/**/*.ts"
+	],
+	"per-file": false,
+	"report-dir": "./temp/coverage/report",
+	"reporter": [
+		"text"
+	],
+	"silent": false,
+	"skip-full": false,
+	"temp-dir": "./temp/coverage",
+	"branches": 100,
+	"functions": 100,
+	"lines": 100,
+	"statements": 100
+}

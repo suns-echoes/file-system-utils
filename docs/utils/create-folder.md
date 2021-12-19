@@ -1,29 +1,22 @@
-Create folder
-=============
+# Create folder
 
 Method creates single folder or nested folders according to given path.
 
-
-Usage
------
+## Usage
 
 ```js
 await FileSystemUtils.createFolder(path);
 ```
 
-
 ### Arguments
 
 * `<string>` `path` - path to create.
-
 
 ### Returns
 
 * `<Promise>` - the promise of folder creation.
 
-
-Examples
---------
+## Examples
 
 ### create folder
 

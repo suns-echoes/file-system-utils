@@ -1,52 +1,56 @@
 {
-  "name": "@suns-echoes/file-system-utils",
-  "main": "index.js",
-  "version": "0.10.0",
-  "description": "File System Utilities Library",
-  "scripts": {
-    "coverage": "cross-env NODE_ENV=test nyc mocha --config .mocharc.src.json",
-    "test": "mocha --config .mocharc.src.json",
-    "test:dist": "mocha --config .mocharc.dist.json",
-    "test:watch": "cross-env NODE_ENV=test mocha --watch",
-    "lint": "eslint .",
-    "dist": "node -r esm scripts/dist",
-    "release": "npm run dist && cd dist && npm publish"
-  },
-  "homepage": "https://github.com/suns-echoes/file-system-utils",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/suns-echoes/file-system-utils"
-  },
-  "author": "Aneta Suns <suns.echoes@gmail.com>",
-  "license": "MIT",
-  "chaiAutoloadPlugins": {
-    "include": [
-      "chai-as-promised"
-    ]
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/register": "^7.5.5",
-    "@istanbuljs/nyc-config-babel": "^2.1.1",
-    "@suns-echoes/exec": "^0.1.2",
-    "@suns-echoes/transform-esm-into-cjs": "^0.1.1",
-    "babel-eslint": "^10.0.3",
-    "babel-plugin-istanbul": "^5.2.0",
-    "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
-    "chai-autoload-plugins": "^0.1.0",
-    "cross-env": "^5.2.0",
-    "eslint": "^6.2.2",
-    "esm": "^3.2.25",
-    "fs-extra": "^8.1.0",
-    "mocha": "^6.2.0",
-    "nyc": "^14.1.1",
-    "rollup": "^1.17.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.1.3"
-  }
+	"name": "@suns-echoes/file-system-utils",
+	"version": "1.0.0",
+	"description": "The file system utilities library.",
+	"keywords": [
+		"filesystem",
+		"utilities",
+		"utils"
+	],
+	"scripts": {
+		"build": "npm run clean && npm run copy:src && npm run build:cjs && npm run build:esm",
+		"build:cjs": "tsc --project ./tsconfig.dist.cjs.json",
+		"build:esm": "tsc --project ./tsconfig.dist.esm.json",
+		"copy:src": "cp-cli ./src ./dist/src",
+		"clean": "rimraf ./dist/",
+		"test": "cross-env TS_NODE_PROJECT=./tsconfig.test.json TS_NODE_FILES=true mocha --exit --r ts-node/register -r chai/register-expect -r ./setup/setup.ts",
+		"coverage": "c8 npm run test",
+		"lint": "eslint .",
+		"ts": "tsc",
+		"check": "npm run lint && npm run ts",
+		"check:full": "npm run check && npm run coverage && npm run audit"
+	},
+	"homepage": "https://github.com/suns-echoes/file-system-utils",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/suns-echoes/file-system-utils"
+	},
+	"author": "Aneta Suns <suns.echoes@gmail.com>",
+	"license": "MIT",
+	"engines": {
+		"node": "16.13.0"
+	},
+	"devDependencies": {
+		"@suns-echoes/exec": "^0.2.0",
+		"@types/chai": "^4.2.22",
+		"@types/chai-as-promised": "^7.1.4",
+		"@types/fs-extra": "^9.0.13",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "^17.0.1",
+		"@types/sinon-chai": "^3.2.6",
+		"@typescript-eslint/eslint-plugin": "^5.5.0",
+		"@typescript-eslint/parser": "^5.5.0",
+		"c8": "^7.10.0",
+		"chai": "^4.3.4",
+		"chai-as-promised": "^7.1.1",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.2.0",
+		"esm": "^3.2.25",
+		"fs-extra": "^10.0.0",
+		"mocha": "^9.1.3",
+		"rimraf": "^3.0.2",
+		"sinon-chai": "^3.7.0",
+		"ts-node": "^10.4.0",
+		"typescript": "^4.4.4"
+	}
 }
