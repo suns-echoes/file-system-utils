@@ -6,10 +6,14 @@ import { lstat } from 'fs/promises';
  * @returns The promise of check.
  */
 export async function isFile(path: string): Promise<boolean> {
+	if (typeof path !== 'string') {
+		throw new TypeError('"path" is not a string');
+	}
+
 	try {
 		return (await lstat(path)).isFile();
 	}
-	catch {
+	catch (error) {
 		return false;
 	}
 }

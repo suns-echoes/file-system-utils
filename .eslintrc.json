@@ -43,6 +43,7 @@
 		"no-console": ["error", { "allow": ["warn", "error"] }],
 		"no-const-assign": "error",
 		"no-debugger": "error",
+		"no-empty": ["error", { "allowEmptyCatch": true }],
 		"no-extra-semi": "error",
 		"no-func-assign": "error",
 		"no-global-assign": "error",

@@ -1,16 +1,13 @@
 import { mkdirs, pathExists, remove, writeJson } from 'fs-extra';
 
-import chai from 'chai';
-import chaiAsPromised from 'chai-as-promised';
-
 import { createFolder } from './create-folder';
-
-
-chai.use(chaiAsPromised);
-
 
 describe('createFolder', () => {
 	const rootpath = 'temp/.spec';
+
+	before(async () => {
+		await remove(rootpath);
+	});
 
 	beforeEach(async () => {
 		await mkdirs(rootpath);
@@ -45,23 +42,22 @@ describe('createFolder', () => {
 		const failDirpath = `${rootpath}/create-folder/with`;
 		const filepath = `${rootpath}/create-folder/with/nested`;
 
-		async function fail() {
+		const fail = async (): Promise<void> => {
 			await mkdirs(failDirpath);
 			await writeJson(filepath, {});
 
 			await createFolder(dirpath);
-		}
+		};
 
 		return expect(fail()).be.rejected;
 	});
 
-	describe('throws if', () => {
-		it('"path" is not a string', async () => {
-			async function fail() {
-				await createFolder(null);
-			}
+	it('throws if "path" is not a string', async () => {
+		const fail = async (): Promise<void> => {
+			// @ts-ignore
+			await createFolder(null);
+		};
 
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
 	});
 });

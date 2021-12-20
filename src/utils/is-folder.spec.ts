@@ -1,17 +1,16 @@
-import fs from 'fs';
+import { writeFile } from 'fs/promises';
 import { join } from 'path';
-import { promisify } from 'util';
 
 import { mkdirs, remove } from 'fs-extra';
 
 import { isFolder } from './is-folder';
 
-
-const writeFile = promisify(fs.writeFile);
-
-
 describe('isFolder', () => {
 	const rootpath = './temp/.spec';
+
+	before(async () => {
+		await remove(rootpath);
+	});
 
 	beforeEach(async () => {
 		await mkdirs(rootpath);
@@ -49,13 +48,12 @@ describe('isFolder', () => {
 		expect(isEntityFolder).to.be.false;
 	});
 
-	describe('throws if', () => {
-		it('"path" is not a string', async () => {
-			async function fail() {
-				await isFolder(null);
-			}
+	it('throws if "path" is not a string', async () => {
+		const fail = async (): Promise<void> => {
+			// @ts-ignore
+			await isFolder(null);
+		};
 
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
 	});
 });

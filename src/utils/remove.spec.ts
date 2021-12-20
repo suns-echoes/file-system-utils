@@ -1,17 +1,17 @@
-import fs from 'fs';
+import { closeSync, openSync } from 'fs';
+import { writeFile } from 'fs/promises';
 import { join } from 'path';
-import { promisify } from 'util';
 
 import { mkdirs, pathExists, remove as fseRemove } from 'fs-extra';
 
 import { remove } from './remove';
 
-
-const writeFile = promisify(fs.writeFile);
-
-
 describe('remove', () => {
 	const rootpath = 'temp/.spec';
+
+	before(async () => {
+		await remove(rootpath);
+	});
 
 	beforeEach(async () => {
 		await mkdirs(rootpath);
@@ -62,9 +62,9 @@ describe('remove', () => {
 		const badfilename = 'bad-file.ext';
 		const goodfilename = 'good-file.ext';
 
-		function filter(path) {
-			return path.indexOf('bad') !== -1;
-		}
+		const filter = (_path: string): boolean => {
+			return _path.indexOf('bad') !== -1;
+		};
 
 		await mkdirs(path);
 		await writeFile(join(path, badfilename), '');
@@ -109,47 +109,38 @@ describe('remove', () => {
 		expect(exists).to.be.false;
 	});
 
-	describe('throws if', () => {
-		it('"path" is not a string', async () => {
-			async function fail() {
-				await remove(null);
+	it('throws if "path" is not a string', async () => {
+		const fail = async (): Promise<void> => {
+			// @ts-ignore
+			await remove(null);
+		};
+
+		return expect(fail()).be.rejected;
+	});
+
+	it('throws if file is in use', async () => {
+		const filepath = join(rootpath, 'block.file');
+
+		const fd = openSync(filepath, 'w+');
+
+		const fail = async (): Promise<void> => {
+			let error = null;
+
+			try {
+				await remove(rootpath);
+			}
+			catch (err) {
+				error = err;
+			}
+			finally {
+				closeSync(fd);
 			}
 
-			return expect(fail()).be.rejected;
-		});
-
-		it('file is in use', async () => {
-			const filepath = join(rootpath, 'block.file');
-
-			const fd = require('fs').openSync(filepath, 'w+');
-
-			async function fail() {
-				let error = null;
-
-				try {
-					await remove(rootpath);
-				}
-				catch (err) {
-					error = err;
-				}
-				finally {
-					require('fs').closeSync(fd);
-				}
-
-				if (error) {
-					throw error;
-				}
+			if (error) {
+				throw error;
 			}
+		};
 
-			return expect(fail()).be.rejected;
-		});
-
-		it('"filter" is not a function nor regexp', async () => {
-			async function fail() {
-				await remove('path', null);
-			}
-
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
 	});
 });

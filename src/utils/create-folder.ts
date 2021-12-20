@@ -7,6 +7,10 @@ import { join } from 'path';
  * @returns The promise of folder create.
  */
 export async function createFolder(path: string): Promise<void> {
+	if (typeof path !== 'string') {
+		throw new TypeError('"path" is not a string');
+	}
+
 	const pathParts = path.split(/\\|\//g);
 	const partCount = pathParts.length;
 	let pathToCheck = '';
