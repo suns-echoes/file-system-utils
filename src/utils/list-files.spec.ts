@@ -1,15 +1,9 @@
-import fs from 'fs';
+import { symlink, writeFile } from 'fs/promises';
 import { join, resolve } from 'path';
-import { promisify } from 'util';
 
 import { mkdirs, remove } from 'fs-extra';
 
 import { listFiles } from './list-files';
-
-
-const symlink = promisify(fs.symlink);
-const writeFile = promisify(fs.writeFile);
-
 
 describe('listFiles', () => {
 	const rootpath = join('temp', '.spec');
@@ -99,9 +93,9 @@ describe('listFiles', () => {
 		const goodfilename = 'good-file.ext';
 		const goodFilePath = join(path, goodfilename);
 
-		function filter(path) {
-			return path.indexOf('bad') === -1;
-		}
+		const filter = (currentPath: string): boolean => {
+			return currentPath.indexOf('bad') === -1;
+		};
 
 		await mkdirs(path);
 		await writeFile(badFilePath, '');
@@ -130,45 +124,48 @@ describe('listFiles', () => {
 		expect(fileList).to.be.eql([goodFilePath]);
 	});
 
-	describe('throws if', () => {
-		it('"path" is not a string', async () => {
-			async function fail() {
-				await listFiles(null);
-			}
+	it('throws if "path" is not a string', async () => {
+		const fail = async (): Promise<any> => {
+			// @ts-ignore
+			await listFiles(null);
+		};
 
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
+	});
 
-		it('"options" is not an object', async () => {
-			async function fail() {
-				await listFiles('.', null);
-			}
+	it('throws if "options" is not an object', async () => {
+		const fail = async (): Promise<any> => {
+			// @ts-ignore
+			await listFiles('.', null);
+		};
 
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
+	});
 
-		it('"options.absolutePaths" is not a boolean', async () => {
-			async function fail() {
-				await listFiles('.', { absolutePaths: null });
-			}
+	it('throws if "options.absolutePaths" is not a boolean', async () => {
+		const fail = async (): Promise<any> => {
+			// @ts-ignore
+			await listFiles('.', { absolutePaths: null });
+		};
 
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
+	});
 
-		it('"options.depth" is not a number', async () => {
-			async function fail() {
-				await listFiles('.', { depth: null });
-			}
+	it('throws if "options.depth" is not a number', async () => {
+		const fail = async (): Promise<any> => {
+			// @ts-ignore
+			await listFiles('.', { depth: null });
+		};
 
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
+	});
 
-		it('"options.filter" is not a function nor regexp', async () => {
-			async function fail() {
-				await listFiles('path', { filter: null });
-			}
+	it('throws if "options.depth" is not an integer', async () => {
+		const fail = async (): Promise<any> => {
+			// @ts-ignore
+			await listFiles('.', { depth: 3.3 });
+		};
 
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).be.rejected;
 	});
 });

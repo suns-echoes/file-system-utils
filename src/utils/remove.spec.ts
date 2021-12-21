@@ -62,8 +62,8 @@ describe('remove', () => {
 		const badfilename = 'bad-file.ext';
 		const goodfilename = 'good-file.ext';
 
-		const filter = (_path: string): boolean => {
-			return _path.indexOf('bad') !== -1;
+		const filter = (currentPath: string): boolean => {
+			return currentPath.indexOf('bad') !== -1;
 		};
 
 		await mkdirs(path);
