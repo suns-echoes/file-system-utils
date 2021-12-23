@@ -44,7 +44,7 @@ describe('writeJSONFile', () => {
 				await writeJSONFile(null);
 			}
 
-			return expect(fail()).be.rejected;
+			return expect(fail()).to.be.rejected;
 		});
 	});
 });

@@ -1,19 +1,15 @@
-import fs from 'fs';
-import { promisify } from 'util';
+import { readdir } from 'fs/promises';
 
 import { FileSystemUtils } from './file-system-utils';
 
-
-const readdir = promisify(fs.readdir);
-
-
-async function findMethods() {
+async function findMethods(): Promise<string[]> {
 	const entities = await readdir('./src/utils');
 	const matchNonSpecFiles = /^((?!\.spec\.js).)*\.js$/;
-	const methods = [];
+	const methods: string[] = [];
 
 	for (const entity of entities) {
 		if (matchNonSpecFiles.test(entity)) {
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const module = require(`./utils/${entity}`);
 			const keys = Object.keys(module);
 
@@ -30,7 +26,6 @@ async function findMethods() {
 
 	return methods;
 }
-
 
 describe('FileSystemUtils', () => {
 	it('exports all existing methods', async () => {

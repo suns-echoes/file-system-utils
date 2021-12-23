@@ -27,28 +27,18 @@ describe('readJSONFile', () => {
 
 	it('returns "undefined" if file does not exist', async () => {
 		const filepath = 'path/to/nowhere';
-		const data = undefined;
 
 		const fileData = await readJSONFile(filepath);
 
-		expect(fileData).to.eql(data);
+		expect(fileData).to.be.undefined;
 	});
 
-	describe('throws if', () => {
-		it('"path" is not a string', async () => {
-			async function fail() {
-				await readJSONFile(null);
-			}
+	it('throws if "filepath" is not a string', async () => {
+		const fail = async (): Promise<any> => {
+			// @ts-ignore
+			await readJSONFile(null);
+		};
 
-			return expect(fail()).be.rejected;
-		});
-
-		it('entity is not a file', async () => {
-			async function fail() {
-				await readJSONFile('.');
-			}
-
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).to.be.rejected;
 	});
 });

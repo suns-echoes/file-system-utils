@@ -1,14 +1,9 @@
-import fs from 'fs';
+import { writeFile } from 'fs/promises';
 import { join } from 'path';
-import { promisify } from 'util';
 
 import { mkdirs, remove } from 'fs-extra';
 
 import { readTextFile } from './read-text-file';
-
-
-const writeFile = promisify(fs.writeFile);
-
 
 describe('readTextFile', () => {
 	const rootpath = join('temp', '.spec');
@@ -34,28 +29,18 @@ describe('readTextFile', () => {
 
 	it('returns "undefined" if file does not exist', async () => {
 		const filepath = 'path/to/nowhere';
-		const content = undefined;
 
 		const fileContent = await readTextFile(filepath);
 
-		expect(fileContent).to.eql(content);
+		expect(fileContent).to.be.undefined;
 	});
 
-	describe('throws if', () => {
-		it('"path" is not a string', async () => {
-			async function fail() {
-				await readTextFile(null);
-			}
+	it('throws if "filepath" is not a string', async () => {
+		const fail = async (): Promise<any> => {
+			// @ts-ignore
+			await readTextFile(null);
+		};
 
-			return expect(fail()).be.rejected;
-		});
-
-		it('entity is not a file', async () => {
-			async function fail() {
-				await readTextFile('.');
-			}
-
-			return expect(fail()).be.rejected;
-		});
+		return expect(fail()).to.be.rejected;
 	});
 });

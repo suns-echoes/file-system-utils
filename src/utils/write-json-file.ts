@@ -1,21 +1,7 @@
-import fs from 'fs';
+import { writeFile } from 'fs/promises';
 import { dirname } from 'path';
-import { promisify } from 'util';
 
 import { createFolder } from './create-folder';
-
-
-const writeFile = promisify(fs.writeFile);
-
-
-async function _writeJSONFile(filepath, data, replacer, space) {
-	const jsonString = JSON.stringify(data, replacer, space);
-	const path = dirname(filepath);
-
-	await createFolder(path);
-	await writeFile(filepath, jsonString, { encoding: 'utf8' });
-}
-
 
 /**
  * Method serialize given data and writes it in JSON format to file.
@@ -26,10 +12,20 @@ async function _writeJSONFile(filepath, data, replacer, space) {
  * @param {string} [space] - indent space for JSON stringify
  * @returns {Promise}
  */
-export async function writeJSONFile(filepath, data, replacer, space) {
+export async function writeJSONFile(
+	filepath: string, data: any, replacer?: ((this: any, key: string, value: any) => any), space?: string | number,
+): Promise<boolean> {
 	if (typeof filepath !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
 
-	return await _writeJSONFile(filepath, data, replacer, space);
+	try {
+		await createFolder(dirname(filepath));
+		await writeFile(filepath, JSON.stringify(data, replacer, space), { encoding: 'utf8' });
+
+		return true;
+	}
+	catch {}
+
+	return false;
 }

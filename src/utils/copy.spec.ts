@@ -209,7 +209,7 @@ describe('copy', () => {
 			await copy(null, 'path');
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if "dest" is not a string', async () => {
@@ -218,7 +218,7 @@ describe('copy', () => {
 			await copy('path', null);
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if "src" and "dest" are the same', async () => {
@@ -226,6 +226,6 @@ describe('copy', () => {
 			await copy('path', 'path');
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 });

@@ -49,7 +49,7 @@ describe('createFolder', () => {
 			await createFolder(dirpath);
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if "path" is not a string', async () => {
@@ -58,6 +58,6 @@ describe('createFolder', () => {
 			await createFolder(null);
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 });

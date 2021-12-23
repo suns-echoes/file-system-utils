@@ -48,7 +48,7 @@ async function _listFiles(
  * @param options The optional object with additional options.
  * @returns The promise of list.
  */
-export async function listFiles(path: string, options?: ListFilesOptions): Promise<string[]> {
+export async function listFiles(path: string, options?: ListFilesOptions): Promise<string[] | null> {
 	if (typeof path !== 'string') {
 		throw new TypeError('"filepath" is not a string');
 	}
@@ -77,9 +77,16 @@ export async function listFiles(path: string, options?: ListFilesOptions): Promi
 		? (currentSrc: string): boolean => filter.test(currentSrc)
 		: (typeof filter === 'function' ? <FilterFunction>filter : null);
 
-	const fileList: string[] = [];
+	try {
+		const fileList: string[] = [];
 
-	await _listFiles(rootPath, depth, listFilter, fileList);
+		if ((await lstat(path)).isDirectory()) {
+			await _listFiles(rootPath, depth, listFilter, fileList);
 
-	return fileList;
+			return fileList;
+		}
+	}
+	catch {}
+
+	return null;
 }

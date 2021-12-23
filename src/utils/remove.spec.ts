@@ -115,7 +115,7 @@ describe('remove', () => {
 			await remove(null);
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if file is in use', async () => {
@@ -141,6 +141,6 @@ describe('remove', () => {
 			}
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 });

@@ -11,7 +11,7 @@
 		"build": "npm run clean && npm run copy:src && npm run build:cjs && npm run build:esm",
 		"build:cjs": "tsc --project ./tsconfig.dist.cjs.json",
 		"build:esm": "tsc --project ./tsconfig.dist.esm.json",
-		"copy:src": "cp-cli ./src ./dist/src",
+		"copy:src": "mkdir dist && cp -r ./src ./dist/src",
 		"clean": "rimraf ./dist/",
 		"test": "cross-env TS_NODE_PROJECT=./tsconfig.test.json TS_NODE_FILES=true mocha --exit --r ts-node/register -r chai/register-expect -r ./setup/setup.ts",
 		"coverage": "c8 npm run test",

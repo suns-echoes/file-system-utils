@@ -54,7 +54,7 @@ describe('listFiles', () => {
 		]);
 	});
 
-	it('return list of files with depth = 0', async () => {
+	it('returns list of files with depth = 0', async () => {
 		const subfolderpath = join(rootpath, 'subfolder');
 
 		await mkdirs(subfolderpath);
@@ -124,13 +124,29 @@ describe('listFiles', () => {
 		expect(fileList).to.be.eql([goodFilePath]);
 	});
 
+	it('returns null if path is not a folder', async () => {
+		const filepath = join(rootpath, 'file.ext');
+
+		await writeFile(filepath, '');
+
+		const fileList = await listFiles(filepath);
+
+		return expect(fileList).to.be.null;
+	});
+
+	it('returns null if path does not exist', async () => {
+		const fileList = await listFiles('i_dont_exist');
+
+		return expect(fileList).to.be.null;
+	});
+
 	it('throws if "path" is not a string', async () => {
 		const fail = async (): Promise<any> => {
 			// @ts-ignore
 			await listFiles(null);
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if "options" is not an object', async () => {
@@ -139,7 +155,7 @@ describe('listFiles', () => {
 			await listFiles('.', null);
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if "options.absolutePaths" is not a boolean', async () => {
@@ -148,7 +164,7 @@ describe('listFiles', () => {
 			await listFiles('.', { absolutePaths: null });
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if "options.depth" is not a number', async () => {
@@ -157,7 +173,7 @@ describe('listFiles', () => {
 			await listFiles('.', { depth: null });
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 
 	it('throws if "options.depth" is not an integer', async () => {
@@ -166,6 +182,6 @@ describe('listFiles', () => {
 			await listFiles('.', { depth: 3.3 });
 		};
 
-		return expect(fail()).be.rejected;
+		return expect(fail()).to.be.rejected;
 	});
 });
