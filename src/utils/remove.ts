@@ -23,7 +23,7 @@ async function _remove(path: string, filter: FilterFunction | null): Promise<voi
 		}
 	}
 	catch (error) {
-		const { code } = <TryCatchError>error;
+		const { code } = <NodeError>error;
 
 		if (code !== 'ENOENT') {
 			throw error;
